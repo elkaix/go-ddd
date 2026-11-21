@@ -34,7 +34,7 @@ Report confirmed defects with evidence and the smallest correction.
 | [Go example](assets/order-example/) | Original order aggregate, money values, and behavioral tests |
 | [Source map](references/source-map.md) | Upstream observations, corrections, and primary references |
 
-The example illustrates domain behavior; adapt its limits and rules to your application. Initial local Go tests were unavailable because the authoring environment had no compiler. Consult the CI result for execution evidence.
+The example illustrates domain behavior; adapt its limits and rules to your application. Formatting, vet, and race-enabled tests run in [CI](https://github.com/elkaix/go-ddd/actions/workflows/ci.yml).
 
 ## Attribution
 
