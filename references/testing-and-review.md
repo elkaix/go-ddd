@@ -37,6 +37,8 @@ go test -race ./...
 
 These are validation commands, not assertions that they have already passed. Verify that `go version` identifies the Go compiler before running them. Report a missing toolchain, unavailable database, or unsupported race runtime as a skipped/blocked check with its reason.
 
+For release modernization, also follow [modern-go.md](modern-go.md): verify the selected compiler, exercise changed JSON/HTTP contracts, use deterministic concurrency tests where suitable, and run the project's pinned `govulncheck` version for relevant module/toolchain changes. Record the build tags, platforms, and unavailable checks that limit coverage.
+
 ## Review findings
 
 For each finding, provide severity, exact code location, triggering input/interleaving/failure, violated invariant, user-visible consequence, and the smallest defensible correction. Include a reproducer or regression scenario when feasible. Mark unverified assumptions and confidence; do not invent line numbers or claim execution from static inspection.

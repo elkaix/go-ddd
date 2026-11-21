@@ -30,11 +30,12 @@ Report confirmed defects with evidence and the smallest correction.
 | Resource | Contents |
 | --- | --- |
 | [Skill](SKILL.md) | Main workflow and completion criteria |
+| [Modern Go](references/modern-go.md) | Go 1.27.4 baseline, release checks, and current engineering practices |
 | [Guides](references/) | Modeling, Go implementation, consistency, evolution, testing, commerce, and source mapping |
 | [Go example](assets/order-example/) | Original order aggregate, money values, and behavioral tests |
 | [Source map](references/source-map.md) | Upstream observations, corrections, and primary references |
 
-The example illustrates domain behavior; adapt its limits and rules to your application. Formatting, vet, and race-enabled tests run in [CI](https://github.com/elkaix/go-ddd/actions/workflows/ci.yml).
+The example illustrates domain behavior; adapt its limits and rules to your application. Formatting, vet, race-enabled tests, and vulnerability checks run in [CI](https://github.com/elkaix/go-ddd/actions/workflows/ci.yml).
 
 ## Attribution
 

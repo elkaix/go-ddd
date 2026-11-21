@@ -8,6 +8,8 @@ Keep domain behavior free of HTTP handlers, SQL rows, ORM lifecycle hooks, and v
 
 Use [`CodeReviewComments`](https://go.dev/wiki/CodeReviewComments#interfaces) for interface, context, and error conventions. Check the project's declared Go version before using language or library features.
 
+Apply the release-aware guidance in [modern-go.md](modern-go.md) for toolchain selection, current standard-library APIs, bounded concurrency, security scanning, and upgrades. Keep the domain model independent of whichever transport or serialization implementation is selected.
+
 ## Value objects and aggregate mutation
 
 Use unexported fields where callers must preserve invariants, constructors that validate input, and intent-revealing behavior. An exported Go type can still be constructed as its zero value: define whether that value is useful or invalid, then make boundary operations enforce that contract. A constructor is not an unbypassable gate.

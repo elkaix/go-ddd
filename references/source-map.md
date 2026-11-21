@@ -10,6 +10,7 @@ Use this reference when explaining the skill's origin, checking an upstream exam
 - The skill instructions and bundled Go example are original. No upstream implementation, book text, diagrams, or vendored dependencies are bundled.
 - The reviewed recursive tree contains no repository-level `LICENSE` or `COPYING` file. License files under `vendor/` belong to dependencies; do not assume they cover the repository's own material. Retain attribution and links when extending this reference.
 - Root `go.mod` declares Go 1.19; `chapter5/go.mod` declares Go 1.18 and `chapter6/go.mod` declares Go 1.19. These are source facts, not recommended toolchain versions. Discover the target project's toolchain and module boundaries before selecting commands or dependencies.
+- Current adaptation baseline: Go 1.27.4, verified 2026-11-21. Use [modern-go.md](modern-go.md) for official release links, patch freshness, version-gated practices, and the refresh procedure; keep this modern guidance distinct from the historical book examples.
 
 ## Observed chapter coverage
 

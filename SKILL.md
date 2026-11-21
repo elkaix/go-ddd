@@ -1,6 +1,6 @@
 ---
 name: go-ddd
-description: Design, implement, refactor, and review Go services using domain-driven design. Use for Go bounded contexts, entities, value objects, aggregates, repositories, domain services, business invariants, or translating the Packt Domain-Driven Design with Go examples into working software.
+description: Design, implement, refactor, and review Go services using domain-driven design and current Go practices. Use for Go bounded contexts, entities, value objects, aggregates, repositories, business invariants, toolchain modernization, or translating the Packt Domain-Driven Design with Go examples into working software.
 ---
 
 # Domain-Driven Design with Go
@@ -14,6 +14,8 @@ This is an original operational adaptation of the public Packt code examples, wi
 Infer the mode from the request: **design**, **implement**, **refactor**, **review**, or **explain**. For a mixed request, design only enough to complete the requested change. A review produces findings; an explanation produces an explanation; neither implies permission to rewrite the application.
 
 For an existing project, inspect its instructions, `go.mod`/`go.work`, relevant packages, handlers, persistence, migrations, tests, and external adapters. Discover nested modules before selecting test commands. Use `rg --files` and focused symbol searches. Record the actual dependency direction and one end-to-end business operation before proposing new packages.
+
+Before implementation, modernization, or a security review, read [modern-go.md](references/modern-go.md). Verify the current stable release and supported toolchains from official Go sources, record the project's language minimum and selected compiler separately, and gate newer APIs on the project's compatibility contract.
 
 For a new project, establish the actors, commands, rules, and persistence needs from the request. Label assumptions. Ask only about an unresolved business decision that changes correctness or the requested scope; continue independent work while that decision remains open.
 
