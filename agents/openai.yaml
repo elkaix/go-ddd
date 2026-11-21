@@ -1,0 +1,14 @@
+interface:
+  display_name: Domain-Driven Design with Go
+  short_description: Design, implement, and review Go domain models
+  default_prompt: Use $go-ddd to inspect this Go service, identify its domain invariants
+    and boundaries, and implement the smallest justified improvement.
+  icon_small: assets/icon.svg
+  icon_large: assets/icon.svg
+policy:
+  products:
+  - chatgpt
+  - codex
+  - api
+  - atlas
+  allow_implicit_invocation: true

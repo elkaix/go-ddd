@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="260" viewBox="0 0 1200 260" role="img" aria-labelledby="banner-title banner-description">
+  <title id="banner-title">Domain-Driven Design with Go</title>
+  <desc id="banner-description">A dark navy typographic banner for the Go domain-driven design agent skill, with restrained cyan accents.</desc>
+  <rect width="1200" height="260" rx="18" fill="#0B1220"/>
+  <rect x="0.5" y="0.5" width="1199" height="259" rx="17.5" fill="none" stroke="#223047"/>
+  <rect x="64" y="48" width="4" height="16" rx="2" fill="#67D8E8"/>
+  <text x="82" y="61" fill="#85DBE8" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="600" letter-spacing="2.5">GO · DOMAIN MODELING · AGENT SKILL</text>
+  <text x="64" y="142" fill="#F4F7FC" font-family="Arial, Helvetica, sans-serif" font-size="56" font-weight="600" letter-spacing="-1.2">Domain-Driven Design with Go</text>
+  <text x="66" y="187" fill="#A5B2C8" font-family="Arial, Helvetica, sans-serif" font-size="19" letter-spacing="0.1">Clear models. Explicit invariants. Reliable Go services.</text>
+  <path d="M66 216H144" stroke="#67D8E8" stroke-width="3" stroke-linecap="round"/>
+</svg>

@@ -1,0 +1,74 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    name: Validate skill and Go example
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Validate entry point and bundled links
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          from urllib.parse import unquote, urlsplit
+
+          root = Path.cwd().resolve()
+          skill = root / "SKILL.md"
+          text = skill.read_text()
+          assert text.startswith("---\n"), "Missing skill frontmatter"
+          frontmatter = text.split("---", 2)[1]
+          assert re.search(r"^name: go-ddd$", frontmatter, re.M), "Unexpected skill name"
+          assert re.search(r"^description: .+", frontmatter, re.M), "Missing description"
+          assert len(text.splitlines()) < 500, "Keep the entry point concise"
+          guides = sorted((root / "references").glob("*.md"))
+          assert guides, "Missing reference guides"
+          missing = []
+          for document in [skill, root / "README.md", *guides]:
+              for target in re.findall(r"\]\(([^)]+)\)", document.read_text()):
+                  url = urlsplit(target)
+                  if url.scheme or url.netloc or not url.path:
+                      continue
+                  destination = (document.parent / unquote(url.path)).resolve()
+                  assert destination.is_relative_to(root), f"Link escapes package: {target}"
+                  if not destination.exists():
+                      missing.append(f"{document.relative_to(root)} -> {target}")
+          assert not missing, "Broken bundled links:\n" + "\n".join(missing)
+          print(f"Entry point and {len(guides)} reference guides validated")
+          PY
+      - name: Set up Go
+        uses: actions/setup-go@d8cbb8045d7f43706b9177cceb36c1f91a6644d5 # v7.1.0
+        with:
+          go-version: stable
+          cache: false
+      - name: Check Go formatting
+        working-directory: assets/order-example
+        run: |
+          unformatted=$(gofmt -l .)
+          if [ -n "$unformatted" ]; then
+            printf '%s\n' "$unformatted"
+            exit 1
+          fi
+      - name: Vet Go example
+        working-directory: assets/order-example
+        run: go vet ./...
+      - name: Test Go example with race detector
+        working-directory: assets/order-example
+        run: go test -race -count=1 ./...
